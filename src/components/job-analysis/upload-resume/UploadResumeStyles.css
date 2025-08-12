@@ -1,0 +1,76 @@
+/* Overlay background */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal box */
+.popup-box {
+  background: white;
+  border-radius: 10px;
+  width: 70%;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.close-icon {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* File upload section */
+.file-section {
+  margin-bottom: 20px;
+}
+
+.file-label {
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.required {
+  font-size: 12px;
+  color: gray;
+}
+
+.file-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Submit button */
+.submit-btn {
+  background-color: #cce6e6;
+  color: #3c3c3c;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.submit-btn:hover {
+  background-color: #b3dcdc;
+}

@@ -1,0 +1,173 @@
+.candidates-section {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e4e4e4;
+}
+
+.candidates-section-title{
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.search-box {
+  float: right;
+  margin-bottom: 10px;
+  width: 30%;
+  padding: 8px 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+.search-box:focus {
+  outline: none;
+}
+
+.candidates-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+
+
+.candidates-header-cell {
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #000000;
+  border-bottom: 1px solid #929292;
+  text-align: left;
+}
+
+
+
+.candidates-row {
+  border-bottom: 1px solid #eee;
+}
+
+.candidates-row:hover {
+  background-color: #f9f9f9;
+}
+
+.candidates-cell {
+  padding: 10px;
+  text-align: left;
+  font-size: 13px;
+}
+
+/* Keep your badge styles */
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+
+
+/* Interview Requested - Blue */
+.badge.interview-requested {
+  background: #e8f2ff;  /* Light blue */
+  color: #0056d6;       /* Deep blue */
+}
+
+/* Screening - Yellow */
+.badge.screening {
+  background: #fff8e1;  /* Light yellow */
+  color: #b68900;       /* Golden yellow */
+}
+
+/* Interviewing - Orange */
+.badge.interviewing {
+  background: #fff0e6;  /* Light orange */
+  color: #d95f00;       /* Dark orange */
+}
+
+/* Rejected - Red */
+.badge.rejected {
+  background: #ffe8e8;  /* Light red */
+  color: #d60000;       /* Dark red */
+}
+
+/* Offer - Green */
+.badge.offer {
+  background: #e6f7e8;  /* Light green */
+  color: #198754;       /* Dark green */
+}
+
+
+.medium {
+  background: #F2E8D7;
+  color: #E5A63C;
+}
+.high {
+  background: #E8F2FF;
+  color: #0056D6;
+}
+.low {
+  background: #fdecea;
+  color: #d93025;
+}
+
+/* Pagination styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 6px;
+}
+
+.pagination button {
+  background: #f4f4f4;
+  border: 1px solid #e4e4e4;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination button.active {
+  background: #0056d6;
+  color: #fff;
+  border-color: #0056d6;
+  font-weight: 600;
+}
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 6px;
+}
+
+.pagination button {
+  background: #f4f4f4;
+  border: 1px solid #e4e4e4;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination button.active {
+  background: #0056d6;
+  color: #fff;
+  border-color: #0056d6;
+  font-weight: 600;
+}

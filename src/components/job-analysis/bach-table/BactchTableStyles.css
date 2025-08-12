@@ -1,0 +1,71 @@
+.batch-section-custom {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e4e4e4;
+}
+
+.batch-section-title-custom {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.batch-table-custom {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.batch-header-cell-custom {
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #000000;
+  border-bottom: 1px solid #929292;
+  text-align: left;
+}
+
+.batch-row-custom {
+  border-bottom: 1px solid #eee;
+}
+
+.batch-row-custom:hover {
+  background-color: #f9f9f9;
+}
+
+.batch-cell-custom {
+  padding: 10px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.batch-pagination-custom {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 6px;
+}
+
+.batch-pagination-custom button {
+  background: #f4f4f4;
+  border: 1px solid #e4e4e4;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.batch-pagination-custom button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.batch-pagination-active-custom {
+  background: #0056d6 !important;
+  color: #fff !important;
+  border-color: #0056d6 !important;
+  font-weight: 600;
+}

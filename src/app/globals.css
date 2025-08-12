@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Cocon';
+  src: url('/fonts/Cocon-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cocon-text {
+  font-family: 'Cocon', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  line-height: 27px;
+}
