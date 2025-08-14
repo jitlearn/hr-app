@@ -1,0 +1,66 @@
+.pre-interview-wrapper {
+  padding: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.status-container {
+  margin-bottom: 1.5rem;
+}
+
+.status-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.status-btn {
+  padding: 6px 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.status-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.status-btn.active {
+  border-color: #2563eb;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.post-review-container {
+  margin-top: 2rem;
+}
+
+.review-textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: none;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.submit-review-btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-review-btn:hover {
+  background-color: #1e4fc5;
+}

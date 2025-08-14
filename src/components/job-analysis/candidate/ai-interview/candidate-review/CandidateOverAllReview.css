@@ -1,0 +1,162 @@
+.overall-review-wrapper {
+  padding: 1rem;
+}
+
+.review-layout {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch; /* make both panels same height */
+}
+
+/* Chat */
+.chat-container {
+  flex: 1;
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 500px; /* fixed height */
+}
+
+.chat-bubble {
+  padding: 0.6rem 0.9rem;
+  margin: 0.4rem 0;
+  border-radius: 6px;
+  max-width: 80%;
+}
+
+.chat-bubble.assistant {
+  background-color: #e3f2fd;
+  align-self: flex-start;
+}
+
+.chat-bubble.user {
+  background-color: #fff3e0;
+  align-self: flex-end;
+}
+
+/* Review Panel */
+.review-panel {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  height: 500px; /* match chat height */
+  overflow-y: auto;
+}
+
+.rating-section {
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
+}
+
+.rating-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.4rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.rating-header:hover {
+  background: #f1f1f1;
+}
+
+.rating-score {
+  font-weight: bold;
+}
+
+.rating-score.good {
+  color: #2e7d32;
+}
+
+.rating-score.average {
+  color: #f9a825;
+}
+
+.rating-score.bad {
+  color: #c62828;
+}
+
+.rating-description {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  color: #444;
+  background: #fafafa;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+/* New Extra Info Section */
+/* New Extra Info Section */
+.extra-info-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Two-column layout for Soft Skills & Weaknesses */
+.grid-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.grid-sections > div {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-sections > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Headings */
+.grid-sections h4,
+.strengths-section h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.6rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.3rem;
+}
+
+/* Soft Skills List */
+.grid-sections ul {
+  padding-left: 1rem;
+  list-style: disc;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.grid-sections li {
+  margin-bottom: 0.4rem;
+}
+
+/* Strengths Box */
+.strengths-section {
+  margin-top: 1.2rem;
+  background: linear-gradient(135deg, #e6f7f1, #d4f1e1);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 5px solid #2e7d32;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.strengths-section p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #2e4d32;
+}

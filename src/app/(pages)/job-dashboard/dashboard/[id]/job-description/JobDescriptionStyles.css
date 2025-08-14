@@ -1,0 +1,102 @@
+.job-description-container {
+  margin: auto;
+  width: 80% ;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.breadcrumb .active {
+  font-weight: bold;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  color: #555;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: #000;
+}
+
+
+.header-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-icon img {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: gray;
+  margin-top: 4px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: rgb(214, 214, 214) 1px solid;
+}
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.edit-btn {
+  background-color: #00bfa6;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.section {
+  margin-bottom: 15px;
+}
+
+.section h4 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}

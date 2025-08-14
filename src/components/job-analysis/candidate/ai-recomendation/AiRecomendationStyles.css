@@ -1,0 +1,53 @@
+.ai-recommendation {
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.ai-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+.yes-text {
+  color: #4caf50; /* green */
+  font-weight: bold;
+}
+
+.no-text {
+  color: #f44336; /* red */
+  font-weight: bold;
+}
+
+.check-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.ai-recommendation p {
+  margin: 10px 0;
+  color: #333;
+}
+
+.ai-recommendation ol {
+  margin-left: 20px;
+}
+
+.candidate-stage-title {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.sub-title{
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
