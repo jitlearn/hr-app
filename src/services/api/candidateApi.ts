@@ -113,3 +113,44 @@ export const getCandidateById = async (candidateId: string): Promise<Candidate |
     return null;
   }
 };
+
+
+
+
+
+
+// Fetch interview analysis for a candidate by ID
+export const getInterviewAnalysisByCandidateId = async (
+  candidateId: string
+): Promise<any | null> => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/analyze-interview-data`,
+      {
+        params: { candidate_id: candidateId },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*", // Allow from anywhere (adjust if needed)
+        },
+      }
+    );
+
+    console.log(
+      "API Response - interview analysis:",
+      response.data
+    );
+
+    // The API returns an array with a single object, so return the first element's output
+    if (Array.isArray(response.data) && response.data.length > 0) {
+      return response.data[0].output ?? null;
+    }
+
+    return null;
+  } catch (error: any) {
+    console.error(
+      "Error fetching interview analysis:",
+      error.response?.data || error.message
+    );
+    return null;
+  }
+};

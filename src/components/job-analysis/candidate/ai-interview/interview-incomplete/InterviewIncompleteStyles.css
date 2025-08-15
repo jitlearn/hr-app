@@ -1,0 +1,74 @@
+/* Heading for Incomplete */
+.ocandidate-review-heading-incomplete {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+  border-left: 4px solid #f59e0b; /* orange for incomplete */
+  padding-left: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Top Summary (same as before) */
+.summary-box {
+  background: #f9fafc;
+  border: 1px solid #e3e6ec;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.summary-item {
+  flex: 1;
+  min-width: 200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  border: 1px solid #f0f0f0;
+}
+
+.summary-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #7b7d81;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.summary-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Reason Box for Incomplete */
+.summary-reason-incomplete {
+  flex-basis: 100%;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 1px solid #fbbf24;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.reason-icon-incomplete {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  color: #d97706;
+}
+
+.reason-text-incomplete {
+  font-size: 0.9rem;
+  color: #b45309;
+  line-height: 1.4;
+}

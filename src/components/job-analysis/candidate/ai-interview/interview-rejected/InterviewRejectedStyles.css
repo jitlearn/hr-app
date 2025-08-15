@@ -1,0 +1,74 @@
+/* Heading */
+.ocandidate-review-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+  border-left: 4px solid #ef4444; /* red for rejection */
+  padding-left: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Top Summary */
+.summary-box {
+  background: #f9fafc;
+  border: 1px solid #e3e6ec;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.summary-item {
+  flex: 1;
+  min-width: 200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  border: 1px solid #f0f0f0;
+}
+
+.summary-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #7b7d81;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.summary-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Reason Box for Rejection */
+.summary-reason-rejected {
+  flex-basis: 100%;
+  background: linear-gradient(135deg, #ffe5e5, #ffcccc);
+  border: 1px solid #f87171;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.reason-icon-rejected {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  color: #b91c1c;
+}
+
+.reason-text-rejected {
+  font-size: 0.9rem;
+  color: #991b1b;
+  line-height: 1.4;
+}

@@ -2,22 +2,110 @@
   padding: 1rem;
 }
 
+/* Heading */
+.ocandidate-review-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+  border-left: 4px solid #65dd91;
+  padding-left: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.evaluation-summary{
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Top Summary */
+.summary-box {
+  background: #f9fafc;
+  border: 1px solid #e3e6ec;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.summary-item {
+  flex: 1;
+  min-width: 200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  border: 1px solid #f0f0f0;
+}
+
+.summary-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #7b7d81;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.summary-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Reason */
+.summary-reason {
+  flex-basis: 100%;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 1px solid #86efac;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.reason-icon {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  color: #16a34a;
+}
+
+.reason-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.reason-text {
+  font-size: 0.9rem;
+  color: #166534;
+  line-height: 1.4;
+}
+
+/* Two-panel Layout */
 .review-layout {
   display: flex;
   gap: 1rem;
-  align-items: stretch; /* make both panels same height */
+  align-items: stretch;
 }
 
 /* Chat */
 .chat-container {
-  flex: 1;
+  flex: 2;
   background: #f7f7f7;
   border-radius: 8px;
   padding: 1rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  height: 500px; /* fixed height */
+  height: 500px;
 }
 
 .chat-bubble {
@@ -44,20 +132,34 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 1rem;
-  height: 500px; /* match chat height */
+  height: 500px;
   overflow-y: auto;
 }
 
-.rating-section {
-  border-bottom: 1px solid #eee;
-  padding: 0.5rem 0;
+.evaluation-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #4ade80;
+  padding-bottom: 0.25rem;
+}
+
+.rating-section-card {
+  border: 1px solid #e3e6ec;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
 }
 
 .rating-header {
   display: flex;
   justify-content: space-between;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
   padding: 0.4rem;
   border-radius: 4px;
   transition: background 0.2s;
@@ -67,21 +169,9 @@
   background: #f1f1f1;
 }
 
-.rating-score {
-  font-weight: bold;
-}
-
-.rating-score.good {
-  color: #2e7d32;
-}
-
-.rating-score.average {
-  color: #f9a825;
-}
-
-.rating-score.bad {
-  color: #c62828;
-}
+.rating-score.good { color: #2e7d32; }
+.rating-score.average { color: #f9a825; }
+.rating-score.bad { color: #c62828; }
 
 .rating-description {
   margin-top: 0.4rem;
@@ -92,71 +182,48 @@
   border-radius: 4px;
 }
 
-/* New Extra Info Section */
-/* New Extra Info Section */
+/* Strengths & Weaknesses */
 .extra-info-section {
   margin-top: 1.5rem;
-  padding: 1rem;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-}
-
-/* Two-column layout for Soft Skills & Weaknesses */
-.grid-sections {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.2rem;
 }
 
-.grid-sections > div {
-  background: #f9fafb;
-  border-radius: 8px;
+.extra-info-section > div {
   padding: 1rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
-.grid-sections > div:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-
-/* Headings */
-.grid-sections h4,
-.strengths-section h4 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.6rem;
-  border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 0.3rem;
-}
-
-/* Soft Skills List */
-.grid-sections ul {
-  padding-left: 1rem;
-  list-style: disc;
-  color: #444;
-  font-size: 0.9rem;
-}
-
-.grid-sections li {
-  margin-bottom: 0.4rem;
-}
-
-/* Strengths Box */
 .strengths-section {
-  margin-top: 1.2rem;
   background: linear-gradient(135deg, #e6f7f1, #d4f1e1);
-  padding: 1rem;
-  border-radius: 8px;
   border-left: 5px solid #2e7d32;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .strengths-section p {
   margin: 0;
   font-size: 0.95rem;
   color: #2e4d32;
+}
+
+.weaknesses-section {
+  background: linear-gradient(135deg, #ffe5e5, #ffd6cc);
+  border-left: 5px solid #d32f2f;
+}
+
+.weaknesses-section p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4d1f1f;
+}
+
+/* Section headings inside extra info */
+.extra-info-section h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.6rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.3rem;
 }

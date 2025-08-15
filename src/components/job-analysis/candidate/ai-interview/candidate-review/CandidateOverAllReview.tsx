@@ -1,44 +1,124 @@
 import React, { useState } from "react";
 import "./CandidateOverAllReview.css";
-import { SELECTED } from "@/sample-data/sample-interviewData";
 
-const CandidateOverAllReview = () => {
+interface QAPair {
+  question: string;
+  answer: string;
+}
+
+interface SoftSkills {
+  soft_skill_evaluation: string;
+  soft_skill_evaluation_rating: number;
+  clarity: string;
+  clarity_rating: number;
+  complex_words_rating: number;
+  fluency: string;
+  fluency_rating: number;
+  confidence: string;
+  confidence_rating: number;
+  conciseness: string;
+  conciseness_rating: number;
+  contextual_appropriateness: string;
+  contextual_appropriateness_rating: number;
+  technical_terminology: string;
+  technical_terminology_rating: number;
+}
+
+interface OverallAgentEvaluation {
+  summary: string;
+  overall_score: number;
+}
+
+interface CandidateOverAllReviewProps {
+  data: {
+    final_status: string;
+    reason_for_selection_or_rejection_or_incomplete: string;
+    call_status: string;
+    qa_pairs: QAPair[];
+    soft_skills: SoftSkills;
+    conversation_duration_seconds: number;
+    strength: string;
+    weakness: string;
+    overall_agent_evaluation: OverallAgentEvaluation;
+    full_transcript: string;
+    relocation_willingness: boolean;
+  };
+}
+
+const CandidateOverAllReview: React.FC<CandidateOverAllReviewProps> = ({ data }) => {
   const [openSection, setOpenSection] = useState<number | null>(null);
 
   // Split transcript into messages
-  const chatMessages = SELECTED.transcript.trim().split("\n").map((line, index) => {
-    const [role, ...messageParts] = line.split(":");
-    const message = messageParts.join(":").trim();
-    return {
-      id: index,
-      role: role.trim(),
-      message
-    };
-  });
+  const chatMessages = data.full_transcript
+    .trim()
+    .split("\n")
+    .map((line, index) => {
+      const [role, ...messageParts] = line.split(":");
+      const message = messageParts.join(":").trim();
+      return {
+        id: index,
+        role: role.trim(),
+        message,
+      };
+    });
 
-  // Extract evaluations
-  const evaluation = SELECTED.agent_extraction["asst_0DxYqjpXy2EObi8cKPs7fwRN"];
-  const strengths = SELECTED.agent_extraction["asst_NKJE7Ch7Il0k2yAGhcqr2YFU"].strength;
-  const weaknesses = SELECTED.agent_extraction["asst_NKJE7Ch7Il0k2yAGhcqr2YFU"].weakness;
-  const softSkills = SELECTED.agent_extraction["asst_kwpZ7PEDimsrGExBR5MXWIq5"];
+  const softSkills = data.soft_skills;
 
-  // Ratings data
-  const ratingSections = [
-    { title: "Final Evaluation", rating: evaluation.final_evaluation_rating, description: evaluation.final_evaluation },
-    { title: "Technical Qualification", rating: evaluation.technical_qualification_rating, description: evaluation.technical_qualification },
-    { title: "Clarity", rating: evaluation.clarity_rating, description: evaluation.clarity },
-    { title: "Technical Understanding", rating: evaluation.technical_understanding_rating, description: evaluation.technical_understanding },
-    { title: "Consistency with CV", rating: evaluation.consistency_with_cv_rating, description: evaluation.consistency_with_cv },
-    { title: "Handling Edge Cases", rating: evaluation.handling_edge_cases_rating, description: evaluation.handling_edge_cases },
+  const softSkillSections = [
+    { title: "Soft Skill Evaluation", rating: softSkills.soft_skill_evaluation_rating, description: softSkills.soft_skill_evaluation },
+    { title: "Clarity", rating: softSkills.clarity_rating, description: softSkills.clarity },
+    { title: "Fluency", rating: softSkills.fluency_rating, description: softSkills.fluency },
+    { title: "Confidence", rating: softSkills.confidence_rating, description: softSkills.confidence },
+    { title: "Conciseness", rating: softSkills.conciseness_rating, description: softSkills.conciseness },
+    { title: "Context Appropriateness", rating: softSkills.contextual_appropriateness_rating, description: softSkills.contextual_appropriateness },
+    { title: "Technical Terminology", rating: softSkills.technical_terminology_rating, description: softSkills.technical_terminology },
   ];
 
   return (
     <div className="overall-review-wrapper">
-      <h2>Candidate Call Review</h2>
+      {/* Heading */}
+      <h2 className="ocandidate-review-heading">Candidate Call Review</h2>
+
+      {/* Top Summary */}
+      <div className="summary-box">
+        <div className="summary-item">
+          <span className="summary-label">Final Status</span>
+          <span className="summary-value">Selected for next round</span>
+        </div>
+        <div className="summary-item">
+          <span className="summary-label">Call Status</span>
+          <span className="summary-value">{data.call_status}</span>
+        </div>
+        <div className="summary-item">
+          <span className="summary-label">Conversation Duration</span>
+          <span className="summary-value">
+            {Math.floor(data.conversation_duration_seconds / 60)} min
+          </span>
+        </div>
+        <div className="summary-item">
+          <span className="summary-label">Relocation Willingness</span>
+          <span className="summary-value">
+            {data.relocation_willingness ? "Yes" : "No"}
+          </span>
+        </div>
+
+        {/* Reason Box */}
+        <div className="summary-reason">
+          <span className="reason-icon">🎉</span>
+          <div className="reason-content">
+            <span className="reason-text">
+              {data.reason_for_selection_or_rejection_or_incomplete}
+            </span>
+          </div>
+
+        </div>
+                  <h3 className="evaluation-heading">Evaluation Summary</h3>
+          <p className="evaluation-summary">{data.overall_agent_evaluation.summary}</p>
+      </div>
 
       {/* Two-panel layout */}
       <div className="review-layout">
-        {/* Chat Interface */}
+        {/* Chat */}
         <div className="chat-container">
           {chatMessages.map((msg) => (
             <div
@@ -52,11 +132,13 @@ const CandidateOverAllReview = () => {
 
         {/* Evaluation Summary */}
         <div className="review-panel">
-          <h3>Evaluation Summary</h3>
-          {ratingSections.map((section, idx) => {
+
+
+          {softSkillSections.map((section, idx) => {
             const ratingValue = Number(section.rating);
+            const isOpen = openSection === idx;
             return (
-              <div key={idx} className="rating-section">
+              <div key={idx} className={`rating-section-card ${isOpen ? "expanded" : ""}`}>
                 <div
                   className="rating-header"
                   onClick={() => setOpenSection(openSection === idx ? null : idx)}
@@ -64,17 +146,13 @@ const CandidateOverAllReview = () => {
                   <span>{section.title}</span>
                   <span
                     className={`rating-score ${
-                      ratingValue >= 7
-                        ? "good"
-                        : ratingValue >= 4
-                        ? "average"
-                        : "bad"
+                      ratingValue >= 7 ? "good" : ratingValue >= 4 ? "average" : "bad"
                     }`}
                   >
                     {ratingValue} / 10
                   </span>
                 </div>
-                {openSection === idx && (
+                {isOpen && (
                   <div className="rating-description">{section.description}</div>
                 )}
               </div>
@@ -83,34 +161,18 @@ const CandidateOverAllReview = () => {
         </div>
       </div>
 
-      {/* New Section for Weaknesses, Soft Skills & Strengths */}
-      <div className="extra-info-section">
-        <div className="grid-sections">
-
-          <div>
-            <h4>Soft Skills</h4>
-            <ul>
-              <li><strong>Soft Skill Rating:</strong> {softSkills.soft_skill_evaluation_rating}/10</li>
-              <li><strong>Clarity:</strong> {softSkills.clarity_rating}/10</li>
-              <li><strong>Fluency:</strong> {softSkills.fluency_rating}/10</li>
-              <li><strong>Confidence:</strong> {softSkills.confidence_rating}/10</li>
-              <li><strong>Conciseness:</strong> {softSkills.conciseness_rating}/10</li>
-              <li><strong>Context Appropriateness:</strong> {softSkills.contextual_appropriateness_rating}/10</li>
-              <li><strong>Technical Terminology:</strong> {softSkills.technical_terminology_rating}/10</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Weaknesses</h4>
-            <p>{weaknesses}</p>
-          </div>
-        </div>
-
+      {/* Strengths & Weaknesses */}
+      <div className="extra-info-section grid-sections">
         <div className="strengths-section">
           <h4>Strengths</h4>
-          <p>{strengths}</p>
+          <p>{data.strength}</p>
         </div>
-      </div>
+        <div className="weaknesses-section">
+          <h4>Weaknesses</h4>
+          <p>{data.weakness}</p>
+        </div>
 
+      </div>
     </div>
   );
 };
