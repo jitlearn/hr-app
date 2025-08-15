@@ -123,6 +123,7 @@ export const getCandidateById = async (candidateId: string): Promise<Candidate |
 export const getInterviewAnalysisByCandidateId = async (
   candidateId: string
 ): Promise<any | null> => {
+  console.log("thsiss workifnddd")
   try {
     const response = await axios.get(
       `${API_URL}/analyze-interview-data`,

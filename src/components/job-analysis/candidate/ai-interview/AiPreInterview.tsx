@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CandidateBusy from "./candidate-busy/CandidateBusy";
-import CandidateNoAnswer from "./candidate-no-answer/CandidateNoAnswer";
+// import CandidateBusy from "./candidate-busy/CandidateBusy";
+// import CandidateNoAnswer from "./candidate-no-answer/CandidateNoAnswer";
 import "./AiPreInterview.css";
 import CandidateOverAllReview from "./candidate-review/CandidateOverAllReview";
 import { getInterviewAnalysisByCandidateId } from "@/services/api/candidateApi";
@@ -11,23 +11,24 @@ const AiPreInterview = () => {
   const [analysisData, setAnalysisData] = useState<any | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const candidate_status = [
-    "Busy",
-    "No Answer",
-    "Not Started",
-    "Completed",
-    "Dropped",
-  ];
+
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const data = await getInterviewAnalysisByCandidateId("1215"); // static ID for now
-      setAnalysisData(data);
-      setLoading(false);
+      try {
+        const data = await getInterviewAnalysisByCandidateId("1252"); // static ID for now
+        setAnalysisData(data);
+      } catch (error) {
+        console.error("Error fetching analysis:", error);
+      } finally {
+        setLoading(false);
+      }
     };
+
     fetchData();
   }, []);
+
 
   console.log("Interview Analysis Data:", analysisData);
 
@@ -36,16 +37,6 @@ const AiPreInterview = () => {
       {/* Candidate Status */}
       <div className="status-container">
         <h3 className="section-title">Candidate Status</h3>
-        <div className="status-buttons">
-          {candidate_status.map((status, index) => (
-            <button
-              key={index}
-              className={`status-btn ${status === "Busy" ? "active" : ""}`}
-            >
-              {status}
-            </button>
-          ))}
-        </div>
       </div>
 
       {/* Loading state */}
