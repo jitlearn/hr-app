@@ -56,7 +56,7 @@ const JobDescription: React.FC = () => {
 
       {/* Pass data & refresh function to BasicDetails */}
       <BasicDetails job={jobDescription} onUpdate={fetchJobDescription} />
-      <TechnicalDetails job={jobDescription} />
+      <TechnicalDetails job={jobDescription} onUpdate={fetchJobDescription} />
       <QualificationsDetails job={jobDescription} />
       <AdditionalDetails job={jobDescription} />
     </div>

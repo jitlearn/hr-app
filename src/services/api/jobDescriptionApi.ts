@@ -144,3 +144,67 @@ export const updateJobDescriptionBasic = async (payload: JobDescriptionUpdatePay
     throw error;
   }
 };
+
+
+export interface JobDescriptionUpdatePayloadTech {
+  id: number;
+    technical: string;
+    tools_and_software: string;
+    certifications: string;
+}
+
+export const updateJobDescriptionTech = async (payload: JobDescriptionUpdatePayloadTech) => {
+  console.log("this is wokring tech details form update api folder ::::  ", payload);
+  try {
+    const response = await axios.put(
+      `${API_URL}/update-jd-tech`,
+      payload,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": N8N_CORS_ALLOW_ORIGIN,
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error updating job tech details:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
+
+
+// export interface JobDescriptionUpdatePayloadTech {
+//   id: number;
+//     technical: string;
+//     tools_and_software: string;
+//     certifications: string;
+// }
+
+// export const updateJobDescriptionTech = async (payload: JobDescriptionUpdatePayloadTech) => {
+//   console.log("this is wokring tech details form update api folder ::::  ", payload);
+//   try {
+//     const response = await axios.put(
+//       `${API_URL}/update-jd-tech`,
+//       payload,
+//       {
+//         headers: {
+//           "Content-Type": "application/json",
+//           "Access-Control-Allow-Origin": N8N_CORS_ALLOW_ORIGIN,
+//         },
+//       }
+//     );
+
+//     return response.data;
+//   } catch (error: any) {
+//     console.error(
+//       "Error updating job tech details:",
+//       error.response?.data || error.message
+//     );
+//     throw error;
+//   }
+// };

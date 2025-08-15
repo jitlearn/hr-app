@@ -11,6 +11,7 @@ import profilePic from "@/assets/images/user_img.png";
 import Image from "next/image";
 import { FiPhone, FiMail } from "react-icons/fi";
 import AiPreInterview from "@/components/job-analysis/candidate/ai-interview/AiPreInterview";
+import { makeCandidateCall } from "@/services/api/candidateApi";
 
 const CandidateProfile: React.FC = () => {
   const params = useParams();
@@ -27,15 +28,25 @@ const CandidateProfile: React.FC = () => {
   const [showNotification, setShowNotification] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-  const handleAIInterview = () => {
+  const handleAIInterview = async () => {
     if (!candidate) return;
 
     const matchLevel = candidate.match_level?.toLowerCase();
 
     if (matchLevel === "low") {
-      setShowConfirmModal(true); // show custom modal
+      setShowConfirmModal(true);
     } else {
-      performAIInterview();
+      try {
+        // Call the webhook API
+        const response = await makeCandidateCall(candidate.candidate_id);
+        console.log("AI Interview webhook response:", response);
+
+        // Proceed with the rest of your AI interview logic
+        performAIInterview();
+      } catch (error) {
+        console.error("Failed to make AI interview call:", error);
+        alert("Failed to start AI interview. Please try again.");
+      }
     }
   };
 
@@ -102,15 +113,14 @@ const CandidateProfile: React.FC = () => {
             )}
           </div>
 
-          {
-            candidate.match_level !== "low" &&(
-                        <div className="profile-actions">
-            <button onClick={handleAIInterview} className="ai-interview-btn">
-              Start AI Pre-Interview
-            </button>
-          </div>
-            )
-          }
+          {candidate.match_level !== "low" && !candidate.call_id  && (
+            <div className="profile-actions">
+              <button onClick={handleAIInterview} className="ai-interview-btn">
+                Start AI Pre-Interview
+              </button>
+            </div>
+          )}
+
 
         </div>
 
@@ -159,7 +169,12 @@ const CandidateProfile: React.FC = () => {
       <div className="candidate-assessment">
         {/* Additional assessment sections can be added here */}
       </div>
-      <AiPreInterview />
+      {
+        candidate.screening_completed &&(
+          <AiPreInterview candidate={candidate} />
+
+        )
+      }
     </div>
   );
 };

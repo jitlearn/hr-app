@@ -6,28 +6,7 @@ interface QAPair {
   answer: string;
 }
 
-interface SoftSkills {
-  soft_skill_evaluation: string;
-  soft_skill_evaluation_rating: number;
-  clarity: string;
-  clarity_rating: number;
-  complex_words_rating: number;
-  fluency: string;
-  fluency_rating: number;
-  confidence: string;
-  confidence_rating: number;
-  conciseness: string;
-  conciseness_rating: number;
-  contextual_appropriateness: string;
-  contextual_appropriateness_rating: number;
-  technical_terminology: string;
-  technical_terminology_rating: number;
-}
 
-interface OverallAgentEvaluation {
-  summary: string;
-  overall_score: number;
-}
 
 interface CandidateOverAllReviewProps {
   data: {
@@ -35,11 +14,11 @@ interface CandidateOverAllReviewProps {
     reason_for_selection_or_rejection_or_incomplete: string;
     call_status: string;
     qa_pairs: QAPair[];
-    soft_skills: SoftSkills;
+    soft_skills: string;
     conversation_duration_seconds: number;
     strength: string;
     weakness: string;
-    overall_agent_evaluation: OverallAgentEvaluation;
+    overall_agent_evaluation: string;
     full_transcript: string;
     relocation_willingness: boolean;
   };
@@ -48,31 +27,75 @@ interface CandidateOverAllReviewProps {
 const CandidateOverAllReview: React.FC<CandidateOverAllReviewProps> = ({ data }) => {
   const [openSection, setOpenSection] = useState<number | null>(null);
 
-  // Split transcript into messages
-  const chatMessages = data.full_transcript
-    .trim()
-    .split("\n")
-    .map((line, index) => {
-      const [role, ...messageParts] = line.split(":");
-      const message = messageParts.join(":").trim();
-      return {
-        id: index,
-        role: role.trim(),
-        message,
-      };
-    });
+  console.log("data ::", data)
 
-  const softSkills = data.soft_skills;
+  const overallEvaluation =
+  typeof data.overall_agent_evaluation === "string"
+    ? JSON.parse(data.overall_agent_evaluation)
+    : data.overall_agent_evaluation || {};
+
+  // Split transcript into messages
+const chatMessages = data.full_transcript
+  .trim()
+  // Split whenever "assistant:" or "user:" appears
+  .split(/(?=assistant:|user:)/gi)
+  .map((line, index) => {
+    const [role, ...messageParts] = line.split(":");
+    const message = messageParts.join(":").trim();
+    return {
+      id: index,
+      role: role.trim().toLowerCase(), // normalize role
+      message,
+    };
+  })
+  .filter(msg => msg.message.length > 0); // remove empty ones
+
+
+  // Parse soft skills if it's a JSON string
+  const softSkills =
+    typeof data.soft_skills === "string"
+      ? JSON.parse(data.soft_skills)
+      : data.soft_skills || {};
 
   const softSkillSections = [
-    { title: "Soft Skill Evaluation", rating: softSkills.soft_skill_evaluation_rating, description: softSkills.soft_skill_evaluation },
-    { title: "Clarity", rating: softSkills.clarity_rating, description: softSkills.clarity },
-    { title: "Fluency", rating: softSkills.fluency_rating, description: softSkills.fluency },
-    { title: "Confidence", rating: softSkills.confidence_rating, description: softSkills.confidence },
-    { title: "Conciseness", rating: softSkills.conciseness_rating, description: softSkills.conciseness },
-    { title: "Context Appropriateness", rating: softSkills.contextual_appropriateness_rating, description: softSkills.contextual_appropriateness },
-    { title: "Technical Terminology", rating: softSkills.technical_terminology_rating, description: softSkills.technical_terminology },
+    {
+      title: "Soft Skill Evaluation",
+      rating: softSkills.soft_skill_evaluation_rating,
+      description: softSkills.soft_skill_evaluation,
+    },
+    {
+      title: "Clarity",
+      rating: softSkills.clarity_rating,
+      description: softSkills.clarity,
+    },
+    {
+      title: "Fluency",
+      rating: softSkills.fluency_rating,
+      description: softSkills.fluency,
+    },
+    {
+      title: "Confidence",
+      rating: softSkills.confidence_rating,
+      description: softSkills.confidence,
+    },
+    {
+      title: "Conciseness",
+      rating: softSkills.conciseness_rating,
+      description: softSkills.conciseness,
+    },
+    {
+      title: "Context Appropriateness",
+      rating: softSkills.contextual_appropriateness_rating,
+      description: softSkills.contextual_appropriateness,
+    },
+    {
+      title: "Technical Terminology",
+      rating: softSkills.technical_terminology_rating,
+      description: softSkills.technical_terminology,
+    },
   ];
+
+ 
 
   return (
     <div className="overall-review-wrapper">
@@ -98,8 +121,10 @@ const CandidateOverAllReview: React.FC<CandidateOverAllReviewProps> = ({ data })
         <div className="summary-item">
           <span className="summary-label">Relocation Willingness</span>
           <span className="summary-value">
-            {data.relocation_willingness ? "Yes" : "No"}
+
+            {data.relocation_willingness  ? "Yes" : "No"}
           </span>
+
         </div>
 
         {/* Reason Box */}
@@ -112,8 +137,11 @@ const CandidateOverAllReview: React.FC<CandidateOverAllReviewProps> = ({ data })
           </div>
 
         </div>
-                  <h3 className="evaluation-heading">Evaluation Summary</h3>
-          <p className="evaluation-summary">{data.overall_agent_evaluation.summary}</p>
+        <h3 className="evaluation-heading">Evaluation Summary</h3>
+        <p className="evaluation-summary">{overallEvaluation.summary}</p>
+        <p className="evaluation-score">
+          Overall Score: {overallEvaluation.overall_score ?? "N/A"}
+        </p>
       </div>
 
       {/* Two-panel layout */}

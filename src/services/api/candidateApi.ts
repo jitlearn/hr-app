@@ -69,6 +69,8 @@ export interface Candidate {
   is_processing: boolean;
   phone_number: string;
   email: string;
+  call_id: string
+  screening_completed: boolean;
 }
 
 // Fetch candidates by Job Description ID
@@ -150,6 +152,65 @@ export const getInterviewAnalysisByCandidateId = async (
   } catch (error: any) {
     console.error(
       "Error fetching interview analysis:",
+      error.response?.data || error.message
+    );
+    return null;
+  }
+};
+
+
+
+
+
+export interface MakeCallPayload {
+  candidateid: string;
+}
+
+export const makeCandidateCall = async (candidateId: string): Promise<any> => {
+  const payload: MakeCallPayload = { candidateid: candidateId };
+
+  try {
+    const response = await axios.post(`${API_URL}/makecall`, payload, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log("Webhook response:", response.data);
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error making candidate call:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
+
+
+
+
+export const getCandidateInterviewDetailsApi = async (
+  candidateId: string
+): Promise<any | null> => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/get-candidate-interview-details`,
+      {
+        params: { candidateid: candidateId },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": N8N_CORS_ALLOW_ORIGIN,
+        },
+      }
+    );
+    console.log(
+      "API Response candidate interview details:",
+      response.data
+    );
+    return response.data ?? null;
+  } catch (error: any) {
+    console.error(
+      "Error fetching candidate interview details:",
       error.response?.data || error.message
     );
     return null;
