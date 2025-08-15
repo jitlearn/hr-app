@@ -31,11 +31,12 @@ const InterviewIncomplete: React.FC<InterviewIncompleteProps> = ({ data }) => {
         <div className="summary-item">
           <span className="summary-label">Conversation Duration</span>
           <span className="summary-value">
-            {Math.floor(data.conversation_duration_seconds / 60)} min
+            {Math.floor(data.conversation_duration_seconds / 60)} minutes
           </span>
         </div>
 
         <div className="summary-item">
+          {/* addeda  */}
           <span className="summary-label">Relocation Willingness</span>
           <span className="summary-value">
             {data.relocation_willingness ? "Yes" : "No"}
