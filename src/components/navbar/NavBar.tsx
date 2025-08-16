@@ -15,14 +15,14 @@ const NavBar = () => {
           height={30}
           className="nav-logo"
         />
-        <div className="nav-title">SmartHR</div>
+        <div className="nav-title">AI Screening Agent</div>
       </Link>
 
       <div className="nav-actions">
         <Link href={'/job-dashboard'} className="nav-btn">
           Job Dashboard
         </Link>
-        <div className="user-avatar">V</div>
+        {/* <div className="user-avatar">V</div> */}
       </div>
     </nav>
   );
