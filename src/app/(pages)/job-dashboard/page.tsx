@@ -14,6 +14,7 @@ const JobDashboard = () => {
   const [jobs, setJobs] = useState<JobDescription[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const totalJobs = jobs.length;
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -74,7 +75,7 @@ const JobDashboard = () => {
         </button>
       </div>
 
-         <JDStatusSection />
+         <JDStatusSection totalJobs={totalJobs} />
 
       {loading ? (
   <div className="loading-container">

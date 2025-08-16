@@ -1,10 +1,10 @@
 
-.stats {
+.job-stats {
   display: flex;
   gap: 10px;
 }
 
-.stat-card {
+.job-stat-card {
   padding: 10px;
   border: #e4e4e4 1px solid;
   background-color: #DAE2F0;
@@ -14,12 +14,12 @@
   text-align: center;
 }
 
-.stat-card h3 {
+.job-stat-card h3 {
   font-size: 14px;
   color: #666;
 }
 
-.stat-card p {
+.job-stat-card p {
   font-size: 20px;
   font-weight: bold;
 }

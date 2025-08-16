@@ -5,7 +5,11 @@ import "./styels.css";
 const API_URL = "https://poc-n8n-app.greenplant-1e0071c3.eastus.azurecontainerapps.io/webhook"; // replace with your API
 const N8N_CORS_ALLOW_ORIGIN = "*"; // set according to your config
 
-const JDStatusSection = () => {
+interface JDStatusSectionProps {
+  totalJobs:number
+}
+
+const JDStatusSection: React.FC<JDStatusSectionProps> = ({totalJobs}) => {
   const [stats, setStats] = useState({
     totalApplicants: 0,
     screening: 0,
@@ -55,20 +59,24 @@ const JDStatusSection = () => {
 
   return (
     <>
-      <div className="stats">
-        <div className="stat-card">
+      <div className="job-stats">
+        <div className="job-stat-card">
+          <h3>Total jobs</h3>
+          <p>{totalJobs}</p>
+        </div>
+        <div className="job-stat-card">
           <h3>Total Applicants</h3>
           <p>{stats.totalApplicants}</p>
         </div>
-        <div className="stat-card">
+        <div className="job-stat-card">
           <h3>Screening stage</h3>
           <p>{stats.screening}</p>
         </div>
-        <div className="stat-card">
+        <div className="job-stat-card">
           <h3>Interview Requested</h3>
           <p>{stats.interviewRequested}</p>
         </div>
-        <div className="stat-card">
+        <div className="job-stat-card">
           <h3>Rejected candidates</h3>
           <p>{stats.rejected}</p>
         </div>

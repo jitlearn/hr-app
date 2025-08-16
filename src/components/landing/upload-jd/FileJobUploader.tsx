@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { createJobDescriptionByDocs } from "@/services/api/jobDescriptionApi";
 
 interface FileJobUploaderProps {
   onSubmit: (description: string) => void;
