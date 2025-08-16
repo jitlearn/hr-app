@@ -18,6 +18,7 @@ const AiPreInterview: React.FC<AiPreInterviewProps> = ({ candidate }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log("::::::::::::::::::::::::   interview details calling api working     ::::::::::::::::::::::::::::: ")
       if (!candidate?.screening_completed) {
         console.log("Screening not completed. Skipping API call.");
         setLoading(false);
@@ -27,6 +28,7 @@ const AiPreInterview: React.FC<AiPreInterviewProps> = ({ candidate }) => {
       setLoading(true);
       try {
         const data = await getCandidateInterviewDetailsApi(candidate.candidate_id);
+        console.log("interview api response from get interview details :::: ", data)
         setAnalysisData(data);
       } catch (error) {
         console.error("Error fetching interview details:", error);
@@ -39,7 +41,6 @@ const AiPreInterview: React.FC<AiPreInterviewProps> = ({ candidate }) => {
   }, [candidate]);
 
   console.log("Interview Analysis Data:", analysisData);
-   console.log("relocation ::", analysisData.relocation_willingness)
 
   return (
     <div className="pre-interview-wrapper">
