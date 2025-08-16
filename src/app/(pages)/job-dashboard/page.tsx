@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import "./JobDashboardStyle.css";
 import UploadJobDescription from "@/components/landing/upload-jd/UploadJobDescription";
 import { getAllJobDescriptions, JobDescription } from "@/services/api/jobDescriptionApi";
+import JDStatusSection from "@/components/job-dashboard/status-section/JDStatusSection";
 
 const JobDashboard = () => {
   const router = useRouter();
@@ -73,6 +74,8 @@ const JobDashboard = () => {
         </button>
       </div>
 
+         <JDStatusSection />
+
       {loading ? (
   <div className="loading-container">
     <div className="spinner"></div>
@@ -92,9 +95,9 @@ const JobDashboard = () => {
               <tr>
                 <th>JOB TITLE</th>
                 <th>POSITION STATUS</th>
-                <th>TOTAL RESUMES</th>
-                <th>HIGH FIT CANDIDATES</th>
-                <th>COMPLETED ANALYSIS</th>
+                <th>EXPERIENCE LEVEL</th>
+                <th>SALARY</th>
+                <th>DEPARTMENT</th>
               </tr>
             </thead>
             <tbody>
@@ -118,9 +121,9 @@ const JobDashboard = () => {
                       {job.status || "N/A"}
                     </span>
                   </td>
-                  <td>{job.total_resumes || 0}</td>
-                  <td>{job.high_fit_candidates || 0}</td>
-                  <td>{job.completed_analysis || "No"}</td>
+                  <td>{job.experience_level || 0}</td>
+                  <td>{job.salary || 0}</td>
+                  <td>{job.department || "No"}</td>
                 </tr>
               ))}
             </tbody>

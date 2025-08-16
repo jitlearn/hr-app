@@ -117,6 +117,26 @@ export const getCandidateById = async (candidateId: string): Promise<Candidate |
 };
 
 
+// Fetch single candidate by Candidate ID
+export const getAllCandidates = async (): Promise<Candidate | null> => {
+  try {
+    const response = await axios.get(`${API_URL}/all-candidates`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": N8N_CORS_ALLOW_ORIGIN,
+      },
+    });
+    console.log("API Response candidate by cnd id:", response.data);
+    return response.data ?? null;
+  } catch (error: any) {
+    console.error(
+      "Error fetching candidate by ID:",
+      error.response?.data || error.message
+    );
+    return null;
+  }
+};
+
 
 
 

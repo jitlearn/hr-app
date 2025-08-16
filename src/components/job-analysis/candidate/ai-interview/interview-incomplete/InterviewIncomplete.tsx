@@ -19,9 +19,14 @@ const InterviewIncomplete: React.FC<InterviewIncompleteProps> = ({ data }) => {
 
       <div className="summary-box">
         <div className="summary-item">
-          <span className="summary-label">Final Status</span>
-          <span className="summary-value">{data.final_status}</span>
+          <span className="summary-label">ai decision</span>
+          <span className="summary-value">
+            {(data.call_status?.toLowerCase() === "busy" || data.call_status?.toLowerCase() === "no-answer") ? "call reschedule" : data.call_status}
+          </span>
+
         </div>
+
+        
 
         <div className="summary-item">
           <span className="summary-label">Call Status</span>
@@ -39,7 +44,7 @@ const InterviewIncomplete: React.FC<InterviewIncompleteProps> = ({ data }) => {
           {/* addeda  */}
           <span className="summary-label">Relocation Willingness</span>
           <span className="summary-value">
-            {data.relocation_willingness ? "Yes" : "No"}
+            {data.relocation_willingness}
           </span>
         </div>
 

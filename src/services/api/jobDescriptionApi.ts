@@ -208,3 +208,39 @@ export const updateJobDescriptionTech = async (payload: JobDescriptionUpdatePayl
 //     throw error;
 //   }
 // };
+
+
+
+
+
+// Full URL for the webhook endpoint
+const CREATE_JOB_DESCRIPTION_BY_DOCS_URL =
+  "https://poc-n8n-app.greenplant-1e0071c3.eastus.azurecontainerapps.io/webhook/create-job-description-by-docs";
+
+export interface JobDescriptionDocsPayload {
+  title: string;
+  id: string;
+  description: string; // base64 encoded file content
+}
+
+export const createJobDescriptionByDocs = async (
+  payload: JobDescriptionDocsPayload
+) => {
+  try {
+    const response = await axios.post(CREATE_JOB_DESCRIPTION_BY_DOCS_URL, payload, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": N8N_CORS_ALLOW_ORIGIN,
+      },
+    });
+
+    console.log("Response from createJobDescriptionByDocs API ::", response);
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Error creating job description by docs:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
