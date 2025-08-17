@@ -15,7 +15,7 @@ const NavBar = () => {
           height={30}
           className="nav-logo"
         />
-        <div className="nav-title">AI Screening Agent</div>
+        <div className="nav-title">SmartHR</div>
       </Link>
 
       <div className="nav-actions">
