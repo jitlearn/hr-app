@@ -214,9 +214,9 @@ export const getCandidateInterviewDetailsApi = async (
 ): Promise<any | null> => {
   try {
     const response = await axios.get(
-      `${API_URL}/get-candidate-interview-details`,
+      `${API_URL}/get-interview-analyze-data`,
       {
-        params: { candidateid: candidateId },
+        params: { candidate_id: candidateId },
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": N8N_CORS_ALLOW_ORIGIN,
