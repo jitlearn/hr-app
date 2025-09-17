@@ -1,2 +1,5 @@
-export const API_URL = "https://poc-n8n-app.greenplant-1e0071c3.eastus.azurecontainerapps.io/webhook"; // Replace with your actual API URL
+// export const API_URL = "https://poc-n8n-app.greenplant-1e0071c3.eastus.azurecontainerapps.io/webhook"; // Replace with your actual API URL
+export const API_URL = "https://smart-hr-screening.app.n8n.cloud/webhook"; // Replace with your actual API URL
 export const N8N_CORS_ALLOW_ORIGIN = "*"; // Adjust as needed for your
+
+// https://smart-hr-screening.app.n8n.cloud/webhook/create-job-description
